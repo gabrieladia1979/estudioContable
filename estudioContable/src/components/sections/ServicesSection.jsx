@@ -1,27 +1,24 @@
-// client/src/components/landing/ServicesSection.jsx
+// src/components/sections/ServicesSection.jsx
 import React from 'react';
 import ServiceCard from './ServiceCard';
-
-// Importa los íconos que necesites de react-icons
-import { FaCalculator, FaUsers, FaChartLine } from 'react-icons/fa'; 
+import { FaCalculator, FaUsers, FaChartLine } from 'react-icons/fa'; // Necesitas 'react-icons'
 
 const servicesData = [
   {
-    icon: FaCalculator,
-    title: 'Asesoramiento Impositivo',
-    description: 'Planificación fiscal y liquidación de impuestos nacionales, provinciales y municipales.'
+    icon: <FaCalculator />,
+    title: 'Impuestos y Contabilidad',
+    description: 'Liquidación de impuestos, contabilidad general y preparación de balances para personas y empresas.'
   },
   {
-    icon: FaUsers,
-    title: 'Liquidación de Sueldos',
-    description: 'Gestión completa de la nómina de tu personal, cargas sociales y obligaciones laborales.'
+    icon: <FaUsers />,
+    title: 'Asesoramiento Laboral',
+    description: 'Administración de personal, liquidación de sueldos y jornales, y gestión de cargas sociales.'
   },
   {
-    icon: FaChartLine,
-    title: 'Contabilidad y Balances',
-    description: 'Elaboración de estados contables, análisis de resultados y reportes de gestión.'
-  },
-  // ... agrega más servicios aquí
+    icon: <FaChartLine />,
+    title: 'Consultoría y Sociedades',
+    description: 'Constitución y mantenimiento de sociedades, análisis de costos y planificación fiscal estratégica.'
+  }
 ];
 
 const ServicesSection = () => {
@@ -29,14 +26,14 @@ const ServicesSection = () => {
     <section id="servicios" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-['Merriweather'] text-green-800">Nuestros Servicios</h2>
-          <p className="text-lg text-gray-600 mt-2">Soluciones a la medida de tus necesidades.</p>
+          <h2 className="text-3xl md:text-4xl font-bold font-['Merriweather'] text-gray-800">Nuestros Servicios</h2>
+          <p className="text-lg text-gray-600 mt-2">Soluciones integrales a la medida de tus necesidades.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicesData.map((service, index) => (
-            <ServiceCard 
+            <ServiceCard
               key={index}
-              IconComponent={service.icon}
+              icon={service.icon}
               title={service.title}
               description={service.description}
             />
