@@ -1,25 +1,8 @@
 // src/components/sections/ServicesSection.jsx
 import React from 'react';
 import ServiceCard from './ServiceCard';
-import { FaCalculator, FaUsers, FaChartLine } from 'react-icons/fa';
-
-const servicesData = [
-  {
-    icon: <FaCalculator />,
-    title: 'Impuestos y Contabilidad',
-    description: 'Liquidación de impuestos, contabilidad general y preparación de balances para personas y empresas.'
-  },
-  {
-    icon: <FaUsers />,
-    title: 'Asesoramiento Laboral',
-    description: 'Administración de personal, liquidación de sueldos y jornales, y gestión de cargas sociales.'
-  },
-  {
-    icon: <FaChartLine />,
-    title: 'Consultoría y Sociedades',
-    description: 'Constitución de sociedades, análisis de costos y planificación fiscal estratégica.'
-  }
-];
+// Actualiza la importación para que apunte al nuevo archivo .jsx
+import { servicesData } from '../../data/servicesData.jsx'; 
 
 const ServicesSection = () => {
   return (
@@ -30,9 +13,9 @@ const ServicesSection = () => {
           <p className="text-lg text-gray-600 mt-3">Soluciones integrales a la medida de tus necesidades.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {servicesData.map((service, index) => (
+          {servicesData.map((service) => (
             <ServiceCard
-              key={index}
+              key={service.id}
               icon={service.icon}
               title={service.title}
               description={service.description}

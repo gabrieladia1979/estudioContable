@@ -17,7 +17,7 @@ const Footer = () => {
         
         {/* Contacto Rápido */}
         <div className="text-center">
-          <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+          <a href="https://wa.me/1168172147" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
             <i className="fab fa-whatsapp mr-2"></i>
             WhatsApp
           </a>
