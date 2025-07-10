@@ -1,4 +1,9 @@
 /* Hero Carousel Styles */
+.hero-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
 .hero-carousel .slick-dots {
   bottom: 40px;
   z-index: 20;
@@ -44,10 +49,15 @@
   opacity: 1;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .hero-carousel .slick-prev,
   .hero-carousel .slick-next {
     display: none !important;
+  }
+  
+  .hero-carousel .slick-dots {
+    bottom: 20px;
   }
 }
 

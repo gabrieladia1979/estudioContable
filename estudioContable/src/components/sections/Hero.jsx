@@ -3,7 +3,6 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './Hero.css';
 
 const Hero = () => {
   const settings = {
@@ -51,17 +50,16 @@ const Hero = () => {
 
   return (
     <section className="relative">
-      <div className="hero-carousel">
+      <div className="hero-carousel relative overflow-hidden">
         <Slider {...settings}>
           {slides.map((slide, index) => (
             <div key={index} className="relative">
               <div className="relative h-[80vh] overflow-hidden">
                 {/* Background Image */}
                 <div 
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat brightness-[0.4]"
                   style={{ 
                     backgroundImage: `url(${slide.backgroundImage})`,
-                    filter: 'brightness(0.4)'
                   }}
                 />
                 
@@ -75,17 +73,17 @@ const Hero = () => {
                       <p className="text-white text-lg md:text-xl mb-4 tracking-wider animate-fade-in-up">
                         {slide.title}
                       </p>
-                      <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in-up-delay">
+                      <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in-up-delay font-merriweather">
                         {slide.subtitle}
                       </h1>
-                      <div className="w-20 h-1 bg-red-500 mb-6 animate-fade-in-up-delay"></div>
+                      <div className="w-20 h-1 bg-primary-500 mb-6 animate-fade-in-up-delay"></div>
                       <p className="text-white text-lg md:text-xl mb-8 leading-relaxed max-w-2xl animate-fade-in-up-delay">
                         {slide.description}
                       </p>
                       <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up-delay-2">
                         <a
                           href="/contacto"
-                          className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-semibold py-3 px-8 transition-all duration-300 text-lg tracking-wide"
+                          className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-semibold py-3 px-8 transition-all duration-300 text-lg tracking-wide hover:scale-105 transform"
                         >
                           CONTACTAR AHORA
                         </a>

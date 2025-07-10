@@ -5,14 +5,13 @@ import HomePage from './pages/HomePage';
 import EstudioPage from './pages/EstudioPage';
 import ServiciosPage from './pages/ServiciosPage';
 import ContactoPage from './pages/ContactoPage';
-import LandingPage from './pages/LandingPage';
 
 function App() {
   return (
     <Router>
       <div className="min-h-screen">
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/estudio" element={<EstudioPage />} />
           <Route path="/servicios" element={<ServiciosPage />} />
           <Route path="/contacto" element={<ContactoPage />} />
