@@ -1,7 +1,7 @@
 // src/components/sections/ServicesSection.jsx
 import React from 'react';
 import ServiceCard from './ServiceCard';
-import { FaCalculator, FaUsers, FaChartLine } from 'react-icons/fa'; // Necesitas 'react-icons'
+import { FaCalculator, FaUsers, FaChartLine } from 'react-icons/fa';
 
 const servicesData = [
   {
@@ -17,19 +17,19 @@ const servicesData = [
   {
     icon: <FaChartLine />,
     title: 'Consultoría y Sociedades',
-    description: 'Constitución y mantenimiento de sociedades, análisis de costos y planificación fiscal estratégica.'
+    description: 'Constitución de sociedades, análisis de costos y planificación fiscal estratégica.'
   }
 ];
 
 const ServicesSection = () => {
   return (
     <section id="servicios" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-['Merriweather'] text-gray-800">Nuestros Servicios</h2>
-          <p className="text-lg text-gray-600 mt-2">Soluciones integrales a la medida de tus necesidades.</p>
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-merriweather font-bold text-gray-800">Nuestros Servicios</h2>
+          <p className="text-lg text-gray-600 mt-3">Soluciones integrales a la medida de tus necesidades.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {servicesData.map((service, index) => (
             <ServiceCard
               key={index}
