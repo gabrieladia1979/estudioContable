@@ -33,7 +33,8 @@ export default {
         }
       },
       fontFamily: {
-        'merriweather': ['Merriweather', 'serif'],
+        'playfair': ['Playfair Display', 'serif'],
+        'inter': ['Inter', 'sans-serif'],
       },
     },
   },

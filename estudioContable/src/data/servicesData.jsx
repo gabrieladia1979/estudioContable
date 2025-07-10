@@ -1,23 +1,42 @@
-// src/data/servicesData.js
-import { FaCalculator, FaUsers, FaChartLine } from 'react-icons/fa';
+// src/data/servicesData.jsx
+import React from 'react';
+import { FaCalculator, FaBuilding, FaUserFriends, FaHandHoldingUsd, FaStore, FaMoneyBillWave } from 'react-icons/fa';
 
 export const servicesData = [
   {
-    id: 'contabilidad', // Añadimos un ID único
+    id: 'tributario',
+    icon: <FaHandHoldingUsd />,
+    title: 'Asesoramiento Tributario',
+    description: 'Ganancias, bienes, IVA, ingresos brutos.'
+  },
+  {
+    id: 'contabilidad',
     icon: <FaCalculator />,
-    title: 'Impuestos y Contabilidad',
-    description: 'Liquidación de impuestos, contabilidad general y preparación de balances para personas y empresas.'
+    title: 'Contabilidad y Balances',
+    description: 'Auditoría y servicios contables para empresas.'
   },
   {
-    id: 'laboral', // Añadimos un ID único
-    icon: <FaUsers />,
-    title: 'Asesoramiento Laboral',
-    description: 'Administración de personal, liquidación de sueldos y jornales, y gestión de cargas sociales.'
+    id: 'sueldos',
+    icon: <FaMoneyBillWave />,
+    title: 'Sueldos',
+    description: 'Liquidación de sueldos y cargas sociales.'
   },
   {
-    id: 'sociedades', // Añadimos un ID único
-    icon: <FaChartLine />,
-    title: 'Consultoría y Sociedades',
-    description: 'Constitución de sociedades, análisis de costos y planificación fiscal estratégica.'
+    id: 'sociedades',
+    icon: <FaBuilding />,
+    title: 'Empresas y Sociedades',
+    description: 'Asesoramiento integral a empresas grandes y medianas.'
+  },
+  {
+    id: 'pymes',
+    icon: <FaStore />,
+    title: 'Pymes',
+    description: 'Asesoramiento integral a empresas pequeñas y familiares.'
+  },
+  {
+    id: 'personas',
+    icon: <FaUserFriends />,
+    title: 'Personas',
+    description: 'Físicas, Autónomos, Ganancias y Bienes Personales.'
   }
 ];

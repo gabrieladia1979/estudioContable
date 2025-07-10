@@ -67,23 +67,23 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
                 
                 {/* Content */}
-                <div className="relative z-10 h-full flex items-center">
+                <div className="relative z-10 h-full flex items-center justify-center">
                   <div className="container mx-auto px-4">
-                    <div className="max-w-3xl">
-                      <p className="text-white text-lg md:text-xl mb-4 tracking-wider animate-fade-in-up">
+                    <div className="max-w-4xl mx-auto text-center">
+                      <p className="text-white text-sm md:text-lg mb-6 tracking-[0.2em] animate-fade-in-up font-inter uppercase">
                         {slide.title}
                       </p>
-                      <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in-up-delay font-merriweather">
+                      <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight animate-fade-in-up-delay font-inter tracking-tight">
                         {slide.subtitle}
                       </h1>
-                      <div className="w-20 h-1 bg-primary-500 mb-6 animate-fade-in-up-delay"></div>
-                      <p className="text-white text-lg md:text-xl mb-8 leading-relaxed max-w-2xl animate-fade-in-up-delay">
+                      <div className="w-24 h-1 bg-red-500 mb-8 animate-fade-in-up-delay mx-auto"></div>
+                      <p className="text-white text-lg md:text-xl mb-10 leading-relaxed max-w-3xl mx-auto animate-fade-in-up-delay font-inter">
                         {slide.description}
                       </p>
-                      <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up-delay-2">
+                      <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up-delay-2 justify-center">
                         <a
                           href="/contacto"
-                          className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-semibold py-3 px-8 transition-all duration-300 text-lg tracking-wide hover:scale-105 transform"
+                          className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-semibold py-4 px-10 transition-all duration-300 text-lg tracking-[0.1em] hover:scale-105 transform font-inter uppercase"
                         >
                           CONTACTAR AHORA
                         </a>

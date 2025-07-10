@@ -7,7 +7,7 @@ const PageLayout = ({ title, subtitle, children }) => {
   return (
     <div>
       <Navbar />
-      <main className="pt-24">
+      <main>
         {/* Encabezado dinámico */}
         <div className="bg-gray-50 py-16">
           <div className="container mx-auto px-4">
