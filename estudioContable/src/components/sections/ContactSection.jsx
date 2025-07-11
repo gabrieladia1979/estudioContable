@@ -5,9 +5,26 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
+    phone: '',
     message: ''
   });
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  const validate = () => {
+    let tempErrors = {};
+    if (!formData.name.trim()) tempErrors.name = "El nombre es obligatorio.";
+    if (!formData.email) {
+      tempErrors.email = "El correo electrónico es obligatorio.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      tempErrors.email = "El correo electrónico no es válido.";
+    }
+    if (!formData.message.trim()) tempErrors.message = "La consulta es obligatoria.";
+    
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,48 +36,61 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí iría la lógica para enviar el formulario.
-    // Por ejemplo, usando 'fetch' a un backend o un servicio como EmailJS.
-    console.log('Formulario a enviar:', formData);
-    alert('Gracias por tu consulta. Nos pondremos en contacto a la brevedad.');
-    
-    // Limpiar el formulario
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+    setSubmitMessage('');
+    if (validate()) {
+      setIsSubmitting(true);
+      console.log('Formulario válido, enviando:', formData);
+      // Simulación de envío exitoso
+      setTimeout(() => {
+        setSubmitMessage('Gracias por tu consulta. Nos pondremos en contacto a la brevedad.');
+        setIsSubmitting(false);
+        setFormData({ name: '', email: '', phone: '', message: '' });
+        setErrors({});
+      }, 1000);
+    } else {
+      setSubmitMessage('Por favor, corrige los errores antes de enviar.');
+    }
   };
 
   return (
     <section id="contacto" className="py-20 bg-white">
       <div className="container mx-auto px-6">
-        {/* ... Encabezado de la sección ... */}
-        
-        <div className="max-w-4xl mx-auto">
-          {/* Añadimos el handler onSubmit al formulario */}
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            {/* Campo Nombre */}
-            <div>
-              <label htmlFor="name" className="block text-gray-700 font-medium mb-2">Nombre</label>
-              <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" />
-            </div>
+        <div className="max-w-4xl mx-auto bg-gray-50 p-8 md:p-12 rounded-lg shadow-xl">
+          <form onSubmit={handleSubmit} noValidate>
+            {submitMessage && (
+              <div className={`mb-4 text-center p-3 rounded-md ${Object.keys(errors).length > 0 ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+                {submitMessage}
+              </div>
+            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+              <div>
+                <label htmlFor="name" className="block text-gray-700 font-medium mb-2">Nombre *</label>
+                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 ${errors.name ? 'border-red-500 ring-red-300' : 'border-gray-300 focus:ring-red-500'}`} />
+                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+              </div>
 
-            {/* Campo Email */}
-            <div>
-              <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Email</label>
-              <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" />
-            </div>
+              <div>
+                <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Correo electrónico *</label>
+                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 ${errors.email ? 'border-red-500 ring-red-300' : 'border-gray-300 focus:ring-red-500'}`} />
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+              </div>
 
-            {/* ... Resto de los campos (subject, message) con 'value' y 'onChange' similares ... */}
-            
-            {/* Botón Enviar */}
-            <div className="md:col-span-2 text-center">
-              <button type="submit" className="bg-green-700 text-white font-bold py-3 px-10 rounded-md hover:bg-green-800 transition-colors text-lg">
-                Enviar
-              </button>
+              <div className="md:col-span-2">
+                 <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">Teléfono</label>
+                 <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" />
+              </div>
+              
+              <div className="md:col-span-2">
+                <label htmlFor="message" className="block text-gray-700 font-medium mb-2">Consulta *</label>
+                <textarea id="message" name="message" rows="5" value={formData.message} onChange={handleChange} required className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 ${errors.message ? 'border-red-500 ring-red-300' : 'border-gray-300 focus:ring-red-500'}`}></textarea>
+                {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
+              </div>
+              
+              <div className="md:col-span-2 text-right">
+                <button type="submit" disabled={isSubmitting} className="bg-red-500 text-white font-bold py-3 px-10 rounded-md hover:bg-red-600 transition-colors text-lg disabled:bg-gray-400">
+                  {isSubmitting ? 'Enviando...' : 'Enviar'}
+                </button>
+              </div>
             </div>
           </form>
         </div>

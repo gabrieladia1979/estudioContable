@@ -5,7 +5,7 @@ import { servicesData } from '../../data/servicesData.jsx';
 
 const ServicesSection = () => {
   return (
-    <section id="servicios" className="py-20 bg-white">
+    <section id="servicios" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 uppercase tracking-wider">Nuestros Servicios</h2>

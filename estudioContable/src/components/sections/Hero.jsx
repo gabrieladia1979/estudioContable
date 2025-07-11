@@ -1,8 +1,9 @@
 // src/components/sections/Hero.jsx
 import React from 'react';
 import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const settings = {
@@ -21,10 +22,9 @@ const Hero = () => {
         breakpoint: 768,
         settings: {
           arrows: false,
-          dots: true
         }
       }
-    ]
+    ],
   };
 
   const slides = [
@@ -49,63 +49,79 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative">
-      <div className="hero-carousel relative overflow-hidden">
-        <Slider {...settings}>
-          {slides.map((slide, index) => (
-            <div key={index} className="relative">
-              <div className="relative h-[80vh] overflow-hidden">
-                {/* Background Image */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat brightness-[0.4]"
-                  style={{ 
-                    backgroundImage: `url(${slide.backgroundImage})`,
-                  }}
-                />
-                
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
-                
-                {/* Content */}
-                <div className="relative z-10 h-full flex items-center justify-center">
-                  <div className="container mx-auto px-4">
-                    <div className="max-w-4xl mx-auto text-center">
-                      <p className="text-white text-sm md:text-lg mb-6 tracking-[0.2em] animate-fade-in-up font-inter uppercase">
-                        {slide.title}
-                      </p>
-                      <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight animate-fade-in-up-delay font-inter tracking-tight">
-                        {slide.subtitle}
-                      </h1>
-                      <div className="w-24 h-1 bg-red-500 mb-8 animate-fade-in-up-delay mx-auto"></div>
-                      <p className="text-white text-lg md:text-xl mb-10 leading-relaxed max-w-3xl mx-auto animate-fade-in-up-delay font-inter">
-                        {slide.description}
-                      </p>
-                      <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up-delay-2 justify-center">
-                        <a
-                          href="/contacto"
-                          className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-semibold py-4 px-10 transition-all duration-300 text-lg tracking-[0.1em] hover:scale-105 transform font-inter uppercase"
-                        >
-                          CONTACTAR AHORA
-                        </a>
-                      </div>
+    <section className="relative hero-carousel-wrapper">
+      {/* Estilos específicos para react-slick que son difíciles de sobreescribir con Tailwind */}
+      <style>{`
+        .hero-carousel-wrapper .slick-dots {
+          bottom: 40px;
+        }
+        .hero-carousel-wrapper .slick-dots li button:before {
+          font-size: 14px;
+          color: white;
+          opacity: 0.6;
+        }
+        .hero-carousel-wrapper .slick-dots li.slick-active button:before {
+          opacity: 1;
+          color: #ef4444; /* red-500 */
+        }
+        .hero-carousel-wrapper .slick-prev, .hero-carousel-wrapper .slick-next {
+          z-index: 20;
+          width: 60px;
+          height: 60px;
+        }
+        .hero-carousel-wrapper .slick-prev { left: 25px; }
+        .hero-carousel-wrapper .slick-next { right: 25px; }
+        .hero-carousel-wrapper .slick-prev:before, .hero-carousel-wrapper .slick-next:before {
+          font-size: 30px;
+          opacity: 0.8;
+        }
+        @media (max-width: 768px) {
+          .hero-carousel-wrapper .slick-prev, .hero-carousel-wrapper .slick-next {
+            display: none !important;
+          }
+          .hero-carousel-wrapper .slick-dots {
+            bottom: 20px;
+          }
+        }
+      `}</style>
+
+      <Slider {...settings}>
+        {slides.map((slide, index) => (
+          <div key={index} className="relative">
+            <div className="relative h-[80vh] overflow-hidden">
+              <div 
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat brightness-[0.4]"
+                style={{ backgroundImage: `url(${slide.backgroundImage})` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+              <div className="relative z-10 h-full flex items-center justify-center">
+                <div className="container mx-auto px-4">
+                  <div className="max-w-4xl mx-auto text-center">
+                    <p className="text-white text-sm md:text-lg mb-6 tracking-[0.2em] animate-fade-in-up font-inter uppercase">
+                      {slide.title}
+                    </p>
+                    <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight animate-fade-in-up-delay font-inter tracking-tight">
+                      {slide.subtitle}
+                    </h1>
+                    <div className="w-24 h-1 bg-red-500 mb-8 animate-fade-in-up-delay mx-auto"></div>
+                    <p className="text-white text-lg md:text-xl mb-10 leading-relaxed max-w-3xl mx-auto animate-fade-in-up-delay font-inter">
+                      {slide.description}
+                    </p>
+                    <div className="animate-fade-in-up-delay-2">
+                      <Link
+                        to="/contacto"
+                        className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-semibold py-4 px-10 transition-all duration-300 text-lg tracking-[0.1em] hover:scale-105 transform font-inter uppercase"
+                      >
+                        CONTACTAR AHORA
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          ))}
-        </Slider>
-      </div>
-      
-      {/* Bottom section with tagline */}
-      <div className="bg-black text-white py-12">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
-            Brindamos soluciones impositivas y contables con profesionalismo, 
-            responsabilidad y alta dedicación hacia el cliente.
-          </p>
-        </div>
-      </div>
+          </div>
+        ))}
+      </Slider>
     </section>
   );
 };
