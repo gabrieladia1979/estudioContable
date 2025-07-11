@@ -1,29 +1,93 @@
 // src/components/layout/Footer.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebookF, FaTwitter, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-gray-300 py-10">
-      <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-        {/* Logo */}
-        <div className="mb-6 md:mb-0">
-          <img src="https://estudiocontableroldan.com.ar/wp-content/uploads/2023/07/logo-estudio-fernando-roldan.png" alt="Logo Estudio Contable" className="h-10 opacity-80" />
+    <>
+      <footer className="bg-gray-900 text-gray-400 pt-16 pb-8">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            
+            {/* Columna 1: Logo y Oficina */}
+            <div className="space-y-4">
+              <Link to="/" className="flex items-center">
+                <div className="flex items-center space-x-2">
+                  <div className="w-10 h-10 bg-red-500 flex items-center justify-center">
+                    <span className="text-white font-bold text-xl">EC</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-white font-bold text-lg leading-tight">ESTUDIO CONTABLE</span>
+                    <span className="text-gray-400 text-xs uppercase">Dr. Fernando J. Roldán</span>
+                  </div>
+                </div>
+              </Link>
+              <div>
+                <h4 className="text-white font-bold text-lg mb-2">Oficina</h4>
+                <p className="flex items-start">
+                  <FaMapMarkerAlt className="mr-2 mt-1 text-red-500" />
+                  <span>Miranda 4765, Piso 9, Oficina "B" - C.A.B.A.</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Columna 2: Contacto */}
+            <div className="space-y-4">
+              <h4 className="text-white font-bold text-lg mb-2">Contacto</h4>
+              <a href="tel:+5491168007249" className="flex items-center hover:text-white transition-colors">
+                <FaPhoneAlt className="mr-2 text-red-500" />
+                <span>+54 9 11 6800 7249</span>
+              </a>
+              <a href="mailto:info@estudio-roldan.com.ar" className="flex items-center hover:text-white transition-colors">
+                <FaEnvelope className="mr-2 text-red-500" />
+                <span>info@estudio-roldan.com.ar</span>
+              </a>
+            </div>
+
+            {/* Columna 3: Redes Sociales */}
+            <div className="space-y-4">
+              <h4 className="text-white font-bold text-lg mb-2">Redes</h4>
+              <div className="flex space-x-4">
+                <a href="#" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-red-500 transition-colors">
+                  <FaFacebookF />
+                </a>
+                <a href="#" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-red-500 transition-colors">
+                  <FaTwitter />
+                </a>
+                <a href="#" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-red-500 transition-colors">
+                  <FaInstagram />
+                </a>
+              </div>
+            </div>
+
+             {/* Columna 4: Placeholder o Links Rápidos */}
+             <div className="space-y-4">
+              <h4 className="text-white font-bold text-lg mb-2">Horario de Atención</h4>
+              <p>Lunes a viernes de 9:30 a 18:00 hs</p>
+            </div>
+            
+          </div>
         </div>
-        
-        {/* Copyright */}
-        <div className="text-center mb-6 md:mb-0">
-          <p>&copy; {new Date().getFullYear()} Estudio Contable. Todos los derechos reservados.</p>
-        </div>
-        
-        {/* Contacto Rápido */}
-        <div className="text-center">
-          <a href="https://wa.me/1168172147" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-            <i className="fab fa-whatsapp mr-2"></i>
-            WhatsApp
-          </a>
+      </footer>
+      <div className="bg-gray-800 text-gray-500 py-4">
+        <div className="container mx-auto px-6 text-center md:flex md:justify-between">
+          <p className="text-sm">&copy; {new Date().getFullYear()} Estudio Contable Roldán. Todos los derechos reservados.</p>
+          <p className="text-sm">Desarrollado por Empresa de Marketing Digital</p>
         </div>
       </div>
-    </footer>
+      
+      {/* Botón Flotante de WhatsApp */}
+      <a 
+        href="https://wa.me/5491168007249"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 bg-green-500 w-16 h-16 rounded-full flex items-center justify-center text-white shadow-lg transform hover:scale-110 transition-transform z-40"
+        aria-label="Contactar por WhatsApp"
+      >
+        <FaWhatsapp className="w-8 h-8" />
+      </a>
+    </>
   );
 };
 

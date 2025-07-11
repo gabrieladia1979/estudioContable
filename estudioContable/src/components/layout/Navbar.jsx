@@ -11,23 +11,20 @@ const Navbar = () => {
   useEffect(() => {
     const controlNavbar = () => {
       if (typeof window !== 'undefined') {
-        if (window.scrollY > lastScrollY && window.scrollY > 100) {
-          // Scrolling down & past 100px
+        // Ocultar al hacer scroll hacia abajo, mostrar al hacer scroll hacia arriba
+        if (window.scrollY > lastScrollY && window.scrollY > 150) {
           setIsVisible(false);
         } else {
-          // Scrolling up or at top
           setIsVisible(true);
         }
         setLastScrollY(window.scrollY);
       }
     };
 
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', controlNavbar);
-      return () => {
-        window.removeEventListener('scroll', controlNavbar);
-      };
-    }
+    window.addEventListener('scroll', controlNavbar);
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    };
   }, [lastScrollY]);
 
   const navLinks = [
@@ -42,19 +39,19 @@ const Navbar = () => {
   };
 
   return (
-    <>
-      {/* Top bar with contact info */}
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+      {/* Top bar con información de contacto */}
       <div className="bg-black text-white py-2 text-sm">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center space-x-6">
-            <span className="flex items-center">
+            <a href="tel:+5491168007249" className="flex items-center hover:text-red-500 transition-colors">
               <i className="fa fa-phone mr-2"></i>
               +54 9 11 6800 7249
-            </span>
-            <span className="flex items-center">
+            </a>
+            <a href="mailto:info@estudio-roldan.com.ar" className="flex items-center hover:text-red-500 transition-colors">
               <i className="fa fa-envelope mr-2"></i>
               info@estudio-roldan.com.ar
-            </span>
+            </a>
           </div>
           <div className="hidden md:block">
             <span>Lunes a viernes de 9:30 a 18:00 hs</span>
@@ -62,42 +59,38 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Main navigation */}
-      <nav className={`bg-white shadow-md fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
-        isVisible ? 'translate-y-0' : '-translate-y-full'
-      }`}>
+      {/* Navegación principal */}
+      <nav className="bg-white shadow-md">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
             <Link to="/" className="flex items-center">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-red-500 rounded-sm flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">EC</span>
+                <div className="w-10 h-10 bg-red-500 flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">EC</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-gray-800 font-bold text-lg leading-tight">ESTUDIO CONTABLE</span>
-                  <span className="text-gray-600 text-xs">DR. FERNANDO J. ROLDÁN</span>
+                  <span className="text-gray-600 text-xs uppercase">Dr. Fernando J. Roldán</span>
                 </div>
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
+            {/* Navegación de escritorio */}
             <div className="hidden lg:flex items-center space-x-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`font-semibold text-sm tracking-wide transition-colors duration-300 ${
+                  className={`font-semibold text-sm tracking-wide transition-colors duration-300 relative after:content-[''] after:absolute after:left-0 after:bottom-[-5px] after:w-full after:h-[2px] after:bg-red-500 after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:text-red-500 hover:after:scale-x-100 ${
                     isActiveLink(link.to)
-                      ? 'text-red-500 border-b-2 border-red-500 pb-1'
-                      : 'text-gray-700 hover:text-red-500'
+                      ? 'text-red-500 after:scale-x-100'
+                      : 'text-gray-700'
                   }`}
                 >
                   {link.label}
                 </Link>
               ))}
-              
-              {/* WhatsApp Button */}
               <a
                 href="https://wa.me/5491168007249"
                 target="_blank"
@@ -108,7 +101,7 @@ const Navbar = () => {
               </a>
             </div>
 
-            {/* Mobile menu button */}
+            {/* Botón de menú móvil */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden p-2 rounded-md text-gray-700 hover:text-red-500 focus:outline-none"
@@ -123,20 +116,16 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Navegación móvil */}
           {isMenuOpen && (
             <div className="lg:hidden border-t border-gray-200 py-4">
-              <div className="flex flex-col space-y-4">
+              <div className="flex flex-col space-y-4 items-start">
                 {navLinks.map((link) => (
                   <Link
                     key={link.to}
                     to={link.to}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`font-semibold text-sm tracking-wide transition-colors duration-300 ${
-                      isActiveLink(link.to)
-                        ? 'text-red-500'
-                        : 'text-gray-700 hover:text-red-500'
-                    }`}
+                    className={`font-semibold text-base py-2 ${isActiveLink(link.to) ? 'text-red-500' : 'text-gray-700 hover:text-red-500'}`}
                   >
                     {link.label}
                   </Link>
@@ -145,7 +134,7 @@ const Navbar = () => {
                   href="https://wa.me/5491168007249"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-6 rounded-full text-sm text-center transition-colors duration-300 w-fit"
+                  className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-6 rounded-full text-sm text-center mt-2"
                 >
                   Whatsapp
                 </a>
@@ -154,7 +143,7 @@ const Navbar = () => {
           )}
         </div>
       </nav>
-    </>
+    </header>
   );
 };
 
