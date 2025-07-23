@@ -7,8 +7,8 @@ const AboutSection = () => {
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
         <div className="md:w-1/2">
           <img 
-            src="https://estudiocontableroldan.com.ar/wp-content/uploads/2023/07/imagen-sobre-nosotros.jpg" 
-            alt="Oficina del estudio contable"
+            src="/icons/image.png" 
+            alt="ABM Estudio Contable"
             className="rounded-lg shadow-xl w-full"
           />
         </div>

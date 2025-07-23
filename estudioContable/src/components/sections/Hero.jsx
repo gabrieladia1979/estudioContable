@@ -44,7 +44,7 @@ const Hero = () => {
       title: "SOLUCIONES A MEDIDA",
       subtitle: "EXPERIENCIA",
       description: "Utilizamos las técnicas profesionales impositivas y contables con alta calidad, adaptándolas a las necesidades particulares de cada cliente.",
-      backgroundImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
+      backgroundImage: "/icons/image2.png"
     }
   ];
 
@@ -108,12 +108,14 @@ const Hero = () => {
                       {slide.description}
                     </p>
                     <div className="animate-fade-in-up-delay-2">
-                      <Link
-                        to="/contacto"
+                      <a
+                        href="https://beacons.ai/abm_mayta?fbclid=PAZXh0bgNhZW0CMTEAAafbrnFvlsV9KYwBnfTszOCwUp0e-tDdSe9UJfXN1A2Z3C_NZzUECu2CTIQvtw_aem_Y1SwIHQWqhgxnUUErb3sDQ"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-semibold py-4 px-10 transition-all duration-300 text-lg tracking-[0.1em] hover:scale-105 transform font-inter uppercase"
                       >
                         CONTACTAR AHORA
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 </div>

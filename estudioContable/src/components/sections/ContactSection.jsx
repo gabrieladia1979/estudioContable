@@ -40,9 +40,23 @@ const ContactSection = () => {
     if (validate()) {
       setIsSubmitting(true);
       console.log('Formulario válido, enviando:', formData);
+      
+      // Crear un enlace mailto con los datos del formulario
+      const subject = encodeURIComponent('Consulta desde el sitio web');
+      const body = encodeURIComponent(
+        `Nombre: ${formData.name}\n` +
+        `Email: ${formData.email}\n` +
+        `Teléfono: ${formData.phone}\n\n` +
+        `Consulta:\n${formData.message}`
+      );
+      const mailtoLink = `mailto:abm.estudio.contable.00@gmail.com?subject=${subject}&body=${body}`;
+      
+      // Abrir cliente de correo
+      window.location.href = mailtoLink;
+      
       // Simulación de envío exitoso
       setTimeout(() => {
-        setSubmitMessage('Gracias por tu consulta. Nos pondremos en contacto a la brevedad.');
+        setSubmitMessage('Se abrió tu cliente de correo para enviar la consulta. También puedes contactarnos directamente en Beacons.');
         setIsSubmitting(false);
         setFormData({ name: '', email: '', phone: '', message: '' });
         setErrors({});
@@ -86,10 +100,18 @@ const ContactSection = () => {
                 {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
               </div>
               
-              <div className="md:col-span-2 text-right">
-                <button type="submit" disabled={isSubmitting} className="bg-red-500 text-white font-bold py-3 px-10 rounded-md hover:bg-red-600 transition-colors text-lg disabled:bg-gray-400">
+              <div className="md:col-span-2 text-center space-y-4">
+                <button type="submit" disabled={isSubmitting} className="bg-red-500 text-white font-bold py-3 px-10 rounded-md hover:bg-red-600 transition-colors text-lg disabled:bg-gray-400 mr-4">
                   {isSubmitting ? 'Enviando...' : 'Enviar'}
                 </button>
+                <a 
+                  href="https://beacons.ai/abm_mayta?fbclid=PAZXh0bgNhZW0CMTEAAafbrnFvlsV9KYwBnfTszOCwUp0e-tDdSe9UJfXN1A2Z3C_NZzUECu2CTIQvtw_aem_Y1SwIHQWqhgxnUUErb3sDQ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-600 text-white font-bold py-3 px-10 rounded-md hover:bg-green-700 transition-colors text-lg inline-block"
+                >
+                  Contactar por Beacons
+                </a>
               </div>
             </div>
           </form>

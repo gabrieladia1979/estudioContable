@@ -165,12 +165,14 @@ const ServiciosPage = () => {
                 <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
                     Solicita una entrevista y descubre cómo podemos ayudarte a alcanzar tus objetivos.
                 </p>
-                <RouterLink
-                    to="/contacto"
+                <a
+                    href="https://beacons.ai/abm_mayta?fbclid=PAZXh0bgNhZW0CMTEAAafbrnFvlsV9KYwBnfTszOCwUp0e-tDdSe9UJfXN1A2Z3C_NZzUECu2CTIQvtw_aem_Y1SwIHQWqhgxnUUErb3sDQ"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-block bg-red-500 text-white font-bold py-4 px-10 rounded-md hover:bg-red-600 transition-colors text-lg"
                 >
                     Solicitar una entrevista
-                </RouterLink>
+                </a>
             </div>
         </section>
       </main>

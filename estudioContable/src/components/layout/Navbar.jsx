@@ -44,13 +44,13 @@ const Navbar = () => {
       <div className="bg-black text-white py-2 text-sm">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center space-x-6">
-            <a href="tel:+5491168007249" className="flex items-center hover:text-red-500 transition-colors">
+            <a href="tel:+541168172147" className="flex items-center hover:text-red-500 transition-colors">
               <i className="fa fa-phone mr-2"></i>
-              +54 9 11 6800 7249
+              +54 11 6817 2147
             </a>
-            <a href="mailto:info@estudio-roldan.com.ar" className="flex items-center hover:text-red-500 transition-colors">
+            <a href="mailto:abm.estudio.contable.00@gmail.com" className="flex items-center hover:text-red-500 transition-colors">
               <i className="fa fa-envelope mr-2"></i>
-              info@estudio-roldan.com.ar
+              abm.estudio.contable.00@gmail.com
             </a>
           </div>
           <div className="hidden md:block">
@@ -66,12 +66,16 @@ const Navbar = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-red-500 flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">EC</span>
+                <div className="w-10 h-10 flex items-center justify-center">
+                  <img 
+                    src="/icons/isabella soler.jpg" 
+                    alt="ABM Estudio Contable" 
+                    className="w-full h-full object-contain rounded"
+                  />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-gray-800 font-bold text-lg leading-tight">ESTUDIO CONTABLE</span>
-                  <span className="text-gray-600 text-xs uppercase">Dr. Fernando J. Roldán</span>
+                  <span className="text-gray-800 font-bold text-lg leading-tight">ABM ESTUDIO CONTABLE</span>
+                  <span className="text-gray-600 text-xs uppercase">Lic. Isabella Soler</span>
                 </div>
               </div>
             </Link>
@@ -92,7 +96,7 @@ const Navbar = () => {
                 </Link>
               ))}
               <a
-                href="https://wa.me/5491168007249"
+                href="https://wa.me/541168172147"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-6 rounded-full text-sm transition-all duration-300 transform hover:scale-105"
@@ -131,7 +135,7 @@ const Navbar = () => {
                   </Link>
                 ))}
                 <a
-                  href="https://wa.me/5491168007249"
+                  href="https://wa.me/541168172147"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-6 rounded-full text-sm text-center mt-2"
